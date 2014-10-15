@@ -32,7 +32,7 @@ public class SendMailTLS {
 //			writeHtmlLogfile("F:\\New folder", "Test1", "filename"+i, "ExpectedData"+i, "ActualData"+i);
 //		}
 		irctc();
-System.out.println("Done");
+
 	}
 	
 	public void sendEmail()
