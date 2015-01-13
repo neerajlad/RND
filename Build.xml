@@ -62,7 +62,7 @@
     password="1cr06mca19">
     <message>Example email sent by Ant Mail task.</message>
 	 <fileset dir="${basedir}">
-      <include name="dependency-check-report.html"/>
+      <include name="./result/*.html"/>
     </fileset>
 	
   </mail>
