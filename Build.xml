@@ -1,0 +1,78 @@
+
+<project name="CI Send Email" basedir=".">
+<target name="send.mail" description="sends a notication mail" >   
+ 
+  <property name="mail.host" value="smtp.googlemail.com" />
+  <property name="mail.port" value="465" />
+  <property name="mail.user" value="neeraj.l@moolya.com" />
+  <property name="mail.pass" value="1cr06mca19" />
+  <property name="mail.from" value="neeraj.l@moolya.com" />
+  <property name="mail.to"   value="neeraj.l@moolya.com" />
+  <property name="ssl"   value="true" />
+ 
+	<!-- <property name="mail.smtp.host" value= "smtp.googlemail.com" />
+	<property name="mail.smtp.socketFactory.port" value="465" />
+	<property name="mail.smtp.socketFactory.class" value= "javax.net.ssl.SSLSocketFactory"/>
+	<property name="mail.smtp.auth" value= "true"/>
+	<property name="mail.smtp.port" value= "465"/> -->
+		
+  <property name="subject" 
+            value="Test Message sent via Ant MailTask" />
+  <property name="message" 
+            value="Hello World, i was sent by the Ant MailTask" />
+ 
+  <mail 
+    mailhost="${mail.host}" 
+    mailport="${mail.port}" 
+    charset="UTF-8" 
+    failonerror = "true"
+ 
+    user      = "${mail.user}"
+    password  = "${mail.pass}"
+    subject   = "${subject}" >
+ 
+    <from address     = "${mail.from}"/>
+    <to address       = "${mail.to}"/>
+ 
+    <message>${message}</message>
+	
+    <!-- <fileset dir="${basedir}">
+      <include name="dependency-check-report.html"/>
+    </fileset> -->
+  </mail>
+ 
+  <tstamp>
+    <format property="send.time" 
+            pattern="MM/dd/yyyy hh:mm aa" 
+            unit="hour"/>
+  </tstamp>
+ 
+  <echo message="Mail successfully sent at ${send.time}" />
+</target>
+
+<target name="sendmail">
+  <mail
+    tolist="neeraj.l@moolya.com"
+    from="neeraj.l@moolya.com"
+    subject="Email subject"
+    mailhost="smtp.gmail.com"
+    mailport="465"
+    ssl="true"
+    user="neeraj.l@moolya.com"
+    password="1cr06mca19">
+    <message>Example email sent by Ant Mail task.</message>
+	 <fileset dir="${basedir}">
+      <include name="dependency-check-report.html"/>
+    </fileset>
+	
+  </mail>
+  
+   <tstamp>
+    <format property="sendTime" 
+            pattern="MM/dd/yyyy hh:mm aa" 
+            unit="hour"/>
+  </tstamp>
+   <echo message="Mail successfully sent at ${sendTime}" />
+</target>
+
+</project>
